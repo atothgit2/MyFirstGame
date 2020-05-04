@@ -26,69 +26,75 @@
     canvas.focus();
     var context = canvas.getContext('2d');
     context.fillStyle = "#ff9933";
-        
+
+    var canvasHeight = canvas.height;
+    
+    var comets = [
+        {x: 50, y: 10, color: '#ff3300', size: 10},
+        {x: 100, y: 10, color: '#00ccff', size: 8},
+        {x: 150, y: 10, color: '#ccff33', size: 6},
+        {x: 200, y: 10, color: '#ff66ff', size: 4},
+        {x: 250, y: 10, color: '#ff99ff', size: 2}
+    ];
+    
+    function clearCanvas(){
+        context.clearRect(0, 0, 640, 640);
+    };
+
     function drawSquare(newHorizontelValue, newVerticalValue){
-    context.clearRect(0, 0, 640, 640);
-    context.fillRect(newHorizontelValue, newVerticalValue, 100, 100);
+        context.fillRect(newHorizontelValue, newVerticalValue, 100, 100);
     };
 
-    var canvas2 = document.getElementById("square");
-    canvas2.focus();
-    var context2 = canvas2.getContext('2d');
-    context.fillStyle = "#921799";
-
-    function drawCommet(newHorizontelValue, newVerticalValue){
-    context2.clearRect(0, 0, 640, 640);
-    context2.fillRect(newHorizontelValue, newVerticalValue, 20, 20);
+    function drawComet(comet){
+        context.fillStyle = comet.color;
+        context.fillRect(comet.x, comet.y, comet.size, comet.size);
     };
+
 /////////////////////////////////////////////////
 var horizontal = 50;
 var vertical = 50;
 
+function mainLoop(){ 
+    clearCanvas();
+    //drawSquare(horizontal, vertical);
+    for(var i = 0; i < comets.length; i++){
+        drawComet(comets[i]);
+        comets[i].y = comets[i].y + (1 + Math.random() * 10);
+    };
+
+    setTimeout(mainLoop, 15);
+};
+
 canvas.onkeydown = function(event) {
-    console.log(event);
+    // console.log(event);
 
-//     if(event.which == 39){
-//         horizontal = horizontal + 5;
-//     }
-//     if(event.which == 37){
-//         horizontal = horizontal - 5;
-//     }
-//     if(event.which == 38){
-//         vertical = vertical - 5;
-//     }
-//     if(event.which == 40){
-//         vertical = vertical + 5;
-//     }
-//     // if(event.keyCode == 39){
-//     //     horizontal = horizontal + 5;
-//     // }
-//     // if(event.keyCode == 37){
-//     //     horizontal = horizontal - 5;
-//     // }
-//     // if(event.keyCode == 38){
-//     //     vertical = vertical - 5;
-//     // }
-//     // if(event.keyCode == 40){
-//     //     vertical = vertical + 5;
-//     // }
+    if(event.which == 39){
+        horizontal = horizontal + 5;
+    }
+    if(event.which == 37){
+        horizontal = horizontal - 5;
+    }
+    if(event.which == 38){
+        vertical = vertical - 5;
+    }
+    if(event.which == 40){
+        vertical = vertical + 5;
+    }
+    if(horizontal > 540){
+    horizontal = 540
+    };
+    if(horizontal < 0){
+    horizontal = 0
+    };
+    if(vertical > 540){
+    vertical = 540
+    };
+    if(vertical < 0){
+    vertical = 0
+    };
+};
 
-//     if(horizontal > 540){
-//     horizontal = 540
-//     };
-//     if(horizontal < 0){
-//     horizontal = 0
-//     };
-//     if(vertical > 540){
-//     vertical = 540
-//     };
-//     if(vertical < 0){
-//     vertical = 0
-//     };
-
-    drawSquare(horizontal, vertical);
-    drawCommet(horizontal, vertical);
-}
+mainLoop();
 /////////////////////////////////////////////////
 
 
