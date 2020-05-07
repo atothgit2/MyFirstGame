@@ -7,16 +7,27 @@
     <style>
         body {
             margin: 0;
-            
+            background-color: rgb(80, 80, 80);
         }
+
+        #canvas-container {
+        width: 100%;
+        text-align:center;
+        }
+
         canvas {
         background-color: black;
-        border: rgb(128, 128, 128) solid 5px;}
-        
+        border: rgb(128, 128, 128) solid 5px;
+        display: inline;
+        margin-top: 30px;
+        }
+                
     </style>
 </head>
 <body>
-    <canvas class="wrap" id="square" width="640" height="640" tabindex="1"></canvas>
+    <div id="canvas-container">
+        <canvas class="wrap" id="square" width="640" height="640" tabindex="1"></canvas>
+    </div>
 </body>
     <script>
 
@@ -28,13 +39,21 @@
     context.fillStyle = "#ff9933";
 
     var canvasHeight = canvas.height;
+
+    function getRandomX(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    ;}
     
+    var randomColor = "#000000".replace(/0/g,function(){return (~~(Math.random()*16)).toString(16);});
+
     var comets = [
-        {x: 50, y: 10, color: '#ff3300', size: 10},
-        {x: 100, y: 10, color: '#00ccff', size: 8},
-        {x: 150, y: 10, color: '#ccff33', size: 6},
-        {x: 200, y: 10, color: '#ff66ff', size: 4},
-        {x: 250, y: 10, color: '#ff99ff', size: 2}
+        {x: getRandomX(10,630), y: 0, color: randomColor, size: getRandomX(5,20)},
+        {x: getRandomX(10,630), y: 0, color: randomColor, size: getRandomX(5,20)},
+        {x: getRandomX(10,630), y: 0, color: randomColor, size: getRandomX(5,20)},
+        {x: getRandomX(10,630), y: 0, color: randomColor, size: getRandomX(5,20)},
+        {x: getRandomX(10,630), y: 0, color: randomColor, size: getRandomX(5,20)}
     ];
     
     function clearCanvas(){
@@ -54,15 +73,19 @@
 var horizontal = 50;
 var vertical = 50;
 
+//drawSquare(10,10);
+
 function mainLoop(){ 
     clearCanvas();
     //drawSquare(horizontal, vertical);
     for(var i = 0; i < comets.length; i++){
         drawComet(comets[i]);
-        comets[i].y = comets[i].y + (1 + Math.random() * 10);
+        comets[i].y = comets[i].y + (3 + getRandomX(1,6));
+        //comets[i].y = comets[i].y + (1 + Math.random() * 10);
     };
-
-    setTimeout(mainLoop, 15);
+    
+    setTimeout(mainLoop, 10000);
+    window.requestAnimationFrame(mainLoop);
 };
 
 canvas.onkeydown = function(event) {
@@ -94,7 +117,7 @@ canvas.onkeydown = function(event) {
     };
 };
 
-mainLoop();
+window.requestAnimationFrame(mainLoop);
 /////////////////////////////////////////////////
 
 
