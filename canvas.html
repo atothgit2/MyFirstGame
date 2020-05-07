@@ -46,15 +46,12 @@
         return Math.floor(Math.random() * (max - min + 1)) + min;
     ;}
     
-    var randomColor = "#000000".replace(/0/g,function(){return (~~(Math.random()*16)).toString(16);});
+    function randomColor() {
+        return "#000000".replace(/0/g,function(){return (~~(Math.random()*16)).toString(16);});
+    };
+    
 
-    var comets = [
-        {x: getRandomX(10,630), y: 0, color: randomColor, size: getRandomX(5,20)},
-        {x: getRandomX(10,630), y: 0, color: randomColor, size: getRandomX(5,20)},
-        {x: getRandomX(10,630), y: 0, color: randomColor, size: getRandomX(5,20)},
-        {x: getRandomX(10,630), y: 0, color: randomColor, size: getRandomX(5,20)},
-        {x: getRandomX(10,630), y: 0, color: randomColor, size: getRandomX(5,20)}
-    ];
+    var comets = new Array();
     
     function clearCanvas(){
         context.clearRect(0, 0, 640, 640);
@@ -69,6 +66,20 @@
         context.fillRect(comet.x, comet.y, comet.size, comet.size);
     };
 
+    function updateCometPosition(comet){
+        comet.y = comet.y + (3 + getRandomX(1,6));
+        if(comet.y > canvasHeight){
+        deleteComet();
+        };
+    };
+
+    function generateComet(){
+        comets.push({x: getRandomX(10,630), y: 0, color: randomColor(), size: getRandomX(5,20), initialPosition: 0});
+    };
+
+    function deleteComet(){
+        comets.shift();
+    };
 /////////////////////////////////////////////////
 var horizontal = 50;
 var vertical = 50;
@@ -77,20 +88,18 @@ var vertical = 50;
 
 function mainLoop(){ 
     clearCanvas();
-    //drawSquare(horizontal, vertical);
+
     for(var i = 0; i < comets.length; i++){
         drawComet(comets[i]);
-        comets[i].y = comets[i].y + (3 + getRandomX(1,6));
-        //comets[i].y = comets[i].y + (1 + Math.random() * 10);
+        updateCometPosition(comets[i]);
     };
-    
-    setTimeout(mainLoop, 10000);
+
     window.requestAnimationFrame(mainLoop);
 };
 
 canvas.onkeydown = function(event) {
     // console.log(event);
-
+    
     if(event.which == 39){
         horizontal = horizontal + 5;
     }
@@ -114,6 +123,12 @@ canvas.onkeydown = function(event) {
     };
     if(vertical < 0){
     vertical = 0
+    };
+
+    if(event.which == 32){
+        setInterval(function(){
+        generateComet();}, 1000);
+        
     };
 };
 
