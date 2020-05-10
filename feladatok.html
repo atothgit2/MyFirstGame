@@ -1,0 +1,133 @@
+<!-- 
+
+Keszits egy functiont ami 50-120-ig kiirja a paros szamokat
+    Keszits egy uj function-t az eredeti alapjan, ami 2 tetszoleges szam kozott kiirja a paros szamokat
+    Ezt a function-t megfuttatva 2 teszoleges szammal, tarold el a visszaadott eredmenyeket (paros szamokat) egy tombben.
+    Az elozo tomb-ot felhasznalva torold ki belole azokat az elemeket amelyek nem oszthatoak 4-el
+
+Keszits egy js objektumot ami egy koordinata rendszerbeli pontot reprezental, x, y ertekkel.
+    keszits egy function-t ami ennek a pontnak az ertekeit szovegesen kiirja
+    pl: x: 12, y: 24
+    keszits egy function-t ami megkap 2 ilyen pont objektumot, es visszaadja a tavolsagukat
+    keszits egy function-t ami megkap 2 ilyen objektumot es visszaadja azt amelyik kozelebb van az origohoz. 
+    Generalj 100 pont objektumot random x es y ertekkel, es add vissza kozuluk azt amelyik a legkozelebb van az origohoz
+    Generalj 100 pont objektumot (ugy hogy az x es az y koordinata 0 es 10 kozotti szam legyen, EGESZ SZAM), tarold el oket egy tombben, majd torold ki belole azokat amelyek x erteke > 4
+
+Minden feladatok kulon html file-ban oldj meg (4 html file) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bercó feladatok</title>
+
+
+</head>
+<body>
+<script>
+    // 1.
+    // Keszits egy ciklust ami 100-szor kiirja, hogy ‘Arpi programozo lesz’
+    for(var i = 1; i <= 100; i++) {
+        console.log(i + '. Bercó, wazze!')
+    };
+
+    // 2.
+    // Keszits egy function-t ami osszad 2 szamot es visszater az ertekevel!
+    // Hivd meg a function-t egyszer 2 tetszoleges szammal es irasd ki az eredmenyet.
+    function addition(num1, num2) {
+        return num1 + num2;
+    };
+
+    console.log(addition(3,4));
+
+    // Hivd meg a function-t 100 szor 2 random szammal es irasd ki az eredmenyeket egyesevel  
+    function addition(num1, num2) {
+        return num1 + num2;
+    };
+
+    function random() {
+        return Math.floor(Math.random() * 100);
+    };
+
+    for(var i = 1; i <= 100; i++) {
+        console.log(i + '. szám: ' + addition(random(), random()));
+    };
+
+    // Hivd meg a function-t 100 szor es szummazd az osszes hivas osszeget
+    
+    var myNums = new Array();
+    var addSum;
+
+    function addition(num1, num2) {
+        addSum = num1 + num2;
+        myNums.push(addSum);
+        //console.log(addSum);
+    };
+
+    function random() {
+        return Math.floor(Math.random() * 100);
+    };
+
+    for(var i = 1; i <= 100; i++) {
+        addition(random(), random());
+        //console.log(i + '. szám: ' + sum);
+        var arraySum = myNums.reduce((accumulator, currentValue) => {
+        return accumulator + currentValue;
+        }, 0);
+        console.log(i + '. szám: ' + addSum);
+    };
+
+    console.log('Összes hívás összege: ' + arraySum);
+
+    // 3.
+    // Keszits egy functiont ami 50-120-ig kiirja a paros szamokat
+    // Keszits egy uj function-t az eredeti alapjan, ami 2 tetszoleges szam kozott kiirja a paros szamokat
+
+    var firstNum;
+    var lastNum;
+
+    function allEvenNums(min, max) {
+        firstNum = min;
+        lastNum = max;
+
+        while (firstNum <= lastNum) {
+            if(firstNum % 2 == 0) {
+            console.log(firstNum);            
+            };
+            firstNum++;
+        };
+    };
+
+    // Ezt a function-t megfuttatva 2 teszoleges szammal, tarold el a visszaadott eredmenyeket (paros szamokat) egy tombben.
+
+    var firstNum;
+    var lastNum;
+    var myNums = new Array();
+
+    function allEvenNums(min, max) {
+        firstNum = min;
+        lastNum = max;
+
+        while (firstNum < lastNum) {
+            if(firstNum % 2 == 0) {
+            myNums.push(firstNum);            
+            };
+            firstNum++;
+        };
+    };
+
+    // Az elozo tomb-ot felhasznalva torold ki belole azokat az elemeket amelyek nem oszthatoak 4-el
+
+    function delete() {
+        for(var i = 0; i < myNums.length; i++) {
+            if (myNums[i] % 4 != 0) {
+                myNums.splice(i,1,myNums[i])
+                console.log(myNums[i]);  
+            };
+        };
+    };
+
+</script>
+</body>
+</html>

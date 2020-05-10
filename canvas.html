@@ -49,7 +49,6 @@
     function randomColor() {
         return "#000000".replace(/0/g,function(){return (~~(Math.random()*16)).toString(16);});
     };
-    
 
     var comets = new Array();
     
@@ -69,7 +68,7 @@
     function updateCometPosition(comet){
         comet.y = comet.y + (3 + getRandomX(1,6));
         if(comet.y > canvasHeight){
-        deleteComet();
+            deleteComet(comet);
         };
     };
 
@@ -77,8 +76,11 @@
         comets.push({x: getRandomX(10,630), y: 0, color: randomColor(), size: getRandomX(5,20), initialPosition: 0});
     };
 
-    function deleteComet(){
-        comets.shift();
+    function deleteComet(comet){
+        var index = comets.indexOf(comet);
+        if (index > -1) {
+        comets.splice(index, 1);
+        };        
     };
 /////////////////////////////////////////////////
 var horizontal = 50;
@@ -92,6 +94,7 @@ function mainLoop(){
     for(var i = 0; i < comets.length; i++){
         drawComet(comets[i]);
         updateCometPosition(comets[i]);
+        console.log(comets[i]);
     };
 
     window.requestAnimationFrame(mainLoop);
@@ -126,9 +129,7 @@ canvas.onkeydown = function(event) {
     };
 
     if(event.which == 32){
-        setInterval(function(){
-        generateComet();}, 1000);
-        
+        generateComet();
     };
 };
 
