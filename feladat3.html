@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset=UTF-8>
+    <meta name=viewport content=width=device-width, initial-scale=1.0>
+    <title>Bercó feladatok</title>
+</head>
+<body>
+<div>hello world!!!</div>
+<script>
+
+    // 3.
+    // Keszits egy functiont ami 50-120-ig kiirja a paros szamokat
+
+    for (var i = 50; i <= 120; i++) {
+        if(i % 2 == 0) {
+            console.log(i);
+        };
+    };
+
+    // Keszits egy uj function-t az eredeti alapjan, ami 2 tetszoleges szam kozott kiirja a paros szamokat
+    function allEvenNums(min, max) {
+        for (var i = min; i <= max; i++) {
+            if(i % 2 == 0) {
+            console.log(i);
+            };
+        };
+    };
+
+    // Ezt a function-t megfuttatva 2 teszoleges szammal, tarold el a visszaadott eredmenyeket (paros szamokat) egy tombben.
+    
+
+    function allEvenNums(min, max) {
+        var evenNums = new Array();
+        for (var i = min; i <= max; i++) {
+            if(i % 2 == 0) {
+                evenNums.push(i);
+                console.log(i);
+            };
+        };
+        return evenNums;
+    };
+
+    console.log(allEvenNums(50,120));
+
+    // Az elozo tomb-ot felhasznalva torold ki belole azokat az elemeket amelyek nem oszthatoak 4-el
+
+    function deleteNums(deleted) {
+        for(var i = 0; i < deleted.length; i++) {
+            if (deleted[i] % 4 != 0) {
+                deleted.splice(i,1,deleted[i]);
+                console.log(deleted[i]);
+            };
+        };
+        return deleted;
+    };
+
+    var myNums = allEvenNums(50,120);
+    console.log(myNums);
+    var DividedBy4 = deleteNums(myNums);
+    console.log(DividedBy4);
+
+</script>
+</body>
+</html>

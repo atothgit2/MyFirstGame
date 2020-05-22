@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset=UTF-8>
+    <!-- <meta name=viewport content=width=device-width, initial-scale=1.0> -->
+    <title>Bercó feladatok</title>
+</head>
+<body>
+<div>hello world!!!</div>
+<script>
+// Keszits egy function ami parameterkent kap egy tetszoleges szot es
+// Megszamolja hany betubol all
+// Megmondja melyik a leggyakoribb betu benne
+// Kiirja a szot visszafele
+
+thisWord = 'sswww'; 
+
+function counter(myWord1) {
+    for (let i = 1; i <= myWord1.length; i++) {
+        if(i = myWord1.length) {
+        console.log('Character count for "' + myWord1 + '" is ' + i + '.');
+        };
+    };
+};
+
+function mostFrequent(myWord2) {
+    var currentCount = 0;
+    var currentChar;
+    
+    var finalCount = 0;
+    var finalChar;
+
+    var finalCountArray = new Array();
+    var finalCharArray = new Array();
+    
+    for (var i = 0; i < myWord2.length; i++) {
+        var currentChar = myWord2[i];
+        for (var i2 = 0; i2 < myWord2.length; i2++) {
+            if(currentChar == myWord2[i2]) {
+                //console.log('Találtam ');
+                currentCount += 1;
+                currentChar = myWord2[i2];
+                };
+            };
+        if(currentCount >= finalCount && currentChar != finalChar) {
+            finalCountArray.push(currentCount);
+            //console.log(finalCount);
+            finalCharArray.push(currentChar);
+            //console.log(finalChar);
+        };
+    currentChar = null;
+    currentCount = 0;
+    };
+    
+    for (let i = 0; i < finalCountArray.length; i++) {
+        console.log('Most frequent letter(s): ' + finalCharArray[i]);
+    };
+    for (let i = 0; i < finalCharArray.length; i++) {
+        console.log('Occurances: ' + finalCharArray[i]);
+    };
+};
+
+counter(thisWord);
+mostFrequent(thisWord);
+
+
+//double loop experiment
+// thisWord = 'sas';
+
+
+// for (let i1 = 0; i1 < thisWord.length; i1++) {
+//     console.log(i1);
+//     for (let i2 = 0; i2 < thisWord.length; i2++) {
+//         if(thisWord[i2] == 's')
+//         console.log('s!!');
+        
+//     };
+    
+// };
+</script>
+</body>
+</html>
+
+
+<!-- Keszits egy functiont ami parameterkent kap egy szamokat tartalmazo array-t, es rendezve visszaadja azt (novekvo). (Nem hasznalhatsz beepitett sort function-t, es ne keress rendezo algoritmusokat. Nem szempont a teljesitmeny, csak a megvalositason, es a tomb-on vegzett muveleteken van a hangsuly)
+Keszits egy osszetett (egymasba agyazott) js objektumot ami egy autot reprezental, motor, es kerek gyerek objektumokkal. Legyenek olyan tulajdonsagai, hogy auto(sebesseg, tomeg), motor(loketterfogat, teljesitmeny), kerek(szelesseg, atmero)
+Keszits egy functiont ami ossze tud hasonlitani 2 auto objektumot egymassal es eldonti, hogy melyik a jobb (minel nagyobb a teljesitmeny annal jobb az auto)
+Generalj 100 auto objektumot
+Keszits egy functiont ami sorba rendezi teljesitmeny alapjan az autokat. -->
