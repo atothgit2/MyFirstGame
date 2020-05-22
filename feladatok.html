@@ -6,6 +6,7 @@
     <title>Bercó feladatok</title>
 </head>
 <body>
+<div>hello world!!!</div>
 <script>
     // 1.
     // Keszits egy ciklust ami 100-szor kiirja, hogy ‘Arpi programozo lesz’
@@ -191,19 +192,20 @@
             distance(origo.x, origo.y, coordinatesArray[i].x, coordinatesArray[i].y)
         };
 
-        var first = results[0];
+        var smallest = results[0];
+        var smallestIndex = 0;
         //console.log ('The first item: ' + first);
         for (var i = 0; i < results.length; i++) {
-            if(results[i] < first) {
-                first = results[i]; 
+            if(results[i] < smallest) {
+                smallest = results[i];
+                smallestIndex = i;
                 //console.log('Smallest distance: ' + first);
             };
         };
-        console.log('Smallest distance: ' + first); 
+        console.log('Smallest distance: ' + smallest); 
 
-        var temp = coordinatesArray.length - 1;
-        var tempX = coordinatesArray[temp].x;
-        var tempY = coordinatesArray[temp].y;
+        var tempX = coordinatesArray[smallestIndex].x;
+        var tempY = coordinatesArray[smallestIndex].y;
         console.log('The coordintes closest to the origo: x: ' + tempX + ', y: ' + tempY);
             
         //reset();
@@ -220,7 +222,7 @@
             coordinatesArray.splice(i, 1);
             };
         };
-        console.log(coordinatesArray);
+        console.log(coordinatesArray)
     };
 
 
