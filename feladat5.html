@@ -26,13 +26,13 @@ function counter(myWord1) {
 function mostFrequent(myWord2) {
     var currentCount = 0;
     var currentChar;
-    
+
     var finalCount = 0;
     var finalChar;
 
-    var finalCountArray = new Array();
-    var finalCharArray = new Array();
-    
+    var finalCountArray = [];
+    var finalCharArray = [];
+
     for (var i = 0; i < myWord2.length; i++) {
         var currentChar = myWord2[i];
         for (var i2 = 0; i2 < myWord2.length; i2++) {
@@ -42,16 +42,30 @@ function mostFrequent(myWord2) {
                 currentChar = myWord2[i2];
                 };
             };
+
+        if(finalCount < currentCount) {
+            finalCount += currentCount;
+            finalChar = currentChar;
+        };
+
+        if(finalCharArray.lenght == 0) {
+            finalCountArray.push(currentCount);
+            //console.log(finalCount);
+            finalCharArray.push(currentChar);
+            //console.log(finalChar);
+        };
+
         if(currentCount >= finalCount && currentChar != finalChar) {
             finalCountArray.push(currentCount);
             //console.log(finalCount);
             finalCharArray.push(currentChar);
             //console.log(finalChar);
         };
+
     currentChar = null;
     currentCount = 0;
     };
-    
+
     for (let i = 0; i < finalCountArray.length; i++) {
         console.log('Most frequent letter(s): ' + finalCharArray[i]);
     };
@@ -63,6 +77,14 @@ function mostFrequent(myWord2) {
 counter(thisWord);
 mostFrequent(thisWord);
 
+// var myArray = [];
+
+// console.log(myArray.length);
+
+// if(myArray.length == 0) {
+//     console.log('üres');
+//     myArray.push(1);
+// };
 
 //double loop experiment
 // thisWord = 'sas';
@@ -77,13 +99,15 @@ mostFrequent(thisWord);
 //     };
     
 // };
+
+// <!-- Keszits egy functiont ami parameterkent kap egy szamokat tartalmazo array-t, es rendezve visszaadja azt (novekvo). (Nem hasznalhatsz beepitett sort function-t, es ne keress rendezo algoritmusokat. Nem szempont a teljesitmeny, csak a megvalositason, es a tomb-on vegzett muveleteken van a hangsuly)
+// Keszits egy osszetett (egymasba agyazott) js objektumot ami egy autot reprezental, motor, es kerek gyerek objektumokkal. Legyenek olyan tulajdonsagai, hogy auto(sebesseg, tomeg), motor(loketterfogat, teljesitmeny), kerek(szelesseg, atmero)
+// Keszits egy functiont ami ossze tud hasonlitani 2 auto objektumot egymassal es eldonti, hogy melyik a jobb (minel nagyobb a teljesitmeny annal jobb az auto)
+// Generalj 100 auto objektumot
+// Keszits egy functiont ami sorba rendezi teljesitmeny alapjan az autokat. -->
 </script>
 </body>
 </html>
 
 
-<!-- Keszits egy functiont ami parameterkent kap egy szamokat tartalmazo array-t, es rendezve visszaadja azt (novekvo). (Nem hasznalhatsz beepitett sort function-t, es ne keress rendezo algoritmusokat. Nem szempont a teljesitmeny, csak a megvalositason, es a tomb-on vegzett muveleteken van a hangsuly)
-Keszits egy osszetett (egymasba agyazott) js objektumot ami egy autot reprezental, motor, es kerek gyerek objektumokkal. Legyenek olyan tulajdonsagai, hogy auto(sebesseg, tomeg), motor(loketterfogat, teljesitmeny), kerek(szelesseg, atmero)
-Keszits egy functiont ami ossze tud hasonlitani 2 auto objektumot egymassal es eldonti, hogy melyik a jobb (minel nagyobb a teljesitmeny annal jobb az auto)
-Generalj 100 auto objektumot
-Keszits egy functiont ami sorba rendezi teljesitmeny alapjan az autokat. -->
+
