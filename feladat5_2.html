@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feladat 5</title>
+    <style>
+        body {
+            background-color: rgb(68, 68, 68);
+        };
+
+    </style>
+</head>
+<body>
+    <div class="mydiv" style="color: rgb(201, 199, 199);">
+        // Keszits egy function ami parameterkent kap egy tetszoleges szot es<br>
+        // Megszamolja hany betubol all<br>
+        // Megmondja melyik a leggyakoribb betu benne<br>
+        // Kiirja a szot visszafele
+    </div>    
+    
+    <script>
+    
+    var thisWord = 'sasrrs'; 
+
+    // Keszits egy function ami parameterkent kap egy tetszoleges szot es<br>
+    // Megszamolja hany betubol all
+
+    function countLenght(myWord) {
+        for (let i = 1; i <= myWord.length; i++) {
+            if(i = myWord.length) {
+            console.log('Character count for "' + myWord + '" is ' + i + '.');
+            };
+        };
+    };
+
+///////////////////////////////////////////////////
+    // Megmondja melyik a leggyakoribb betu benne<br>
+    function frequency(myWord) {
+        var sortedItem = [];
+        var sortedItems = new Array;
+
+        for (let i = 0; i < myWord.length; i++) {
+            let currentCharacter = myWord[i];
+            let currentCount = 0;
+
+            for (let i2 = 0; i2 < myWord.length; i2++) {
+                if (currentCharacter == myWord[i2]) {
+                    currentCount += 1;
+                };  
+            };
+            
+            sortedItem.character = currentCharacter;
+            sortedItem.count = currentCount;
+            console.log(sortedItem);
+            sortedItems.push(sortedItem);
+        };
+            console.log(sortedItems);
+// ///////
+//         var sortedItems1 = [
+//             {character: 'a', count: 3},
+//             {character: 'a', count: 3},
+//             {character: 'b', count: 1},
+//             {character: 'c', count: 2},
+//             {character: 'c', count: 2},
+//             {character: 'd', count: 3}
+//         ];
+// ///////
+//         for (let i3 = 0; i3 < sortedItems1.length; i3++) {
+//             var sortedArrayItem = sortedItems1[i3].character;
+//             console.log(sortedArrayItem);
+
+//             for (let i4 = i3 + 1; i4 < sortedItems1.length; i4++) {
+//                 if (sortedArrayItem == sortedItems1[i4].character) {
+//                     sortedItems1.splice(i4,1);        
+//                 };
+//            };
+//             console.log(sortedItems1);
+//         };
+//         return sortedItems1;
+    };
+
+///////////////////////////////////////////////////
+        var sortedItems1 = [
+            {character: 'a', count: 6},
+            {character: 'b', count: 3},
+            {character: 'c', count: 3},
+            {character: 'd', count: 5}
+        ];
+///////
+    
+    function mostFrequent(thisArray) {
+        var countArray = [];
+
+        for (let i = 0; i < thisArray.length; i++) {
+            countArray.push(thisArray[i].count);
+        };
+        console.log(countArray);
+
+        var biggest = countArray[0];
+
+        for (let i2 = 1; i2 < countArray.length; i2++) {
+            if (countArray[i2] > biggest) {
+                biggest = countArray[i2];
+            };
+        };
+        console.log(biggest);
+        return biggest;
+    };
+
+///////////////////////////////////////////
+    //countLenght(thisWord);
+    frequency(thisWord);
+    //countFrequency(thisWord);
+    //mostFrequent(sortedItems1);
+
+    </script>
+</body>
+</html>
+
+
+<!-- Keszits egy functiont ami parameterkent kap egy szamokat tartalmazo array-t, es rendezve visszaadja azt (novekvo). (Nem hasznalhatsz beepitett sort function-t, es ne keress rendezo algoritmusokat. Nem szempont a teljesitmeny, csak a megvalositason, es a tomb-on vegzett muveleteken van a hangsuly)
+// Keszits egy osszetett (egymasba agyazott) js objektumot ami egy autot reprezental, motor, es kerek gyerek objektumokkal. Legyenek olyan tulajdonsagai, hogy auto(sebesseg, tomeg), motor(loketterfogat, teljesitmeny), kerek(szelesseg, atmero)
+// Keszits egy functiont ami ossze tud hasonlitani 2 auto objektumot egymassal es eldonti, hogy melyik a jobb (minel nagyobb a teljesitmeny annal jobb az auto)
+// Generalj 100 auto objektumot
+// Keszits egy functiont ami sorba rendezi teljesitmeny alapjan az autokat. -->

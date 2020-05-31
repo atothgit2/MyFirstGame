@@ -4,6 +4,11 @@
     <meta charset=UTF-8>
     <!-- <meta name=viewport content=width=device-width, initial-scale=1.0> -->
     <title>Bercó feladatok</title>
+    <style>
+        body {
+            background-color: rgb(121, 121, 121);
+        };
+    </style>
 </head>
 <body>
 <div>hello world!!!</div>
@@ -13,7 +18,7 @@
 // Megmondja melyik a leggyakoribb betu benne
 // Kiirja a szot visszafele
 
-thisWord = 'sswww'; 
+thisWord = 'asswww'; 
 
 function counter(myWord1) {
     for (let i = 1; i <= myWord1.length; i++) {
@@ -22,7 +27,26 @@ function counter(myWord1) {
         };
     };
 };
+//////////////////////////////////////////
+function sorter(myWord2) {
+    var sortedItems = new Array();
+    var sortedItem = new Object();
+    
+    sortedItem.count = 1;
+    sortedItem.char = myWord2[0];
+    sortedItems.push(sortedItem);
+    
+    for (var i1 = 0; i1 < myWord2.length; i1++) {
+        
+        if (myWord2[i1] != 1) {
+            //sortedItem.count += 1;
+            console.log('yey');
 
+    
+    };
+};
+
+//////////////////////////////////////////
 function mostFrequent(myWord2) {
     var currentCount = 0;
     var currentChar;
@@ -44,18 +68,20 @@ function mostFrequent(myWord2) {
             };
 
         if(finalCount < currentCount) {
-            finalCount += currentCount;
+            finalCount = currentCount;
             finalChar = currentChar;
         };
 
-        if(finalCharArray.lenght == 0) {
+        if(finalCountArray.length == 0) {
             finalCountArray.push(currentCount);
             //console.log(finalCount);
             finalCharArray.push(currentChar);
             //console.log(finalChar);
         };
 
-        if(currentCount >= finalCount && currentChar != finalChar) {
+        if(currentCount >= finalCount 
+        //&& currentChar != myWord2[i]
+        ) {
             finalCountArray.push(currentCount);
             //console.log(finalCount);
             finalCharArray.push(currentChar);
@@ -70,12 +96,15 @@ function mostFrequent(myWord2) {
         console.log('Most frequent letter(s): ' + finalCharArray[i]);
     };
     for (let i = 0; i < finalCharArray.length; i++) {
-        console.log('Occurances: ' + finalCharArray[i]);
+        console.log('Occurances: ' + finalCountArray[i]);
     };
+    console.log(finalCharArray);
+    console.log(finalCountArray);
 };
 
-counter(thisWord);
-mostFrequent(thisWord);
+// counter(thisWord);
+sorter(thisWord);
+// mostFrequent(thisWord);
 
 // var myArray = [];
 
@@ -108,6 +137,3 @@ mostFrequent(thisWord);
 </script>
 </body>
 </html>
-
-
-
