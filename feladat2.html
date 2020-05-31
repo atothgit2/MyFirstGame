@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset=UTF-8>
+    <meta name=viewport content=width=device-width, initial-scale=1.0>
+    <title>Bercó feladatok</title>
+</head>
+<body>
+<div>hello world!!!</div>
+<script>
+    
+    // 2.
+    // Keszits egy function-t ami osszad 2 szamot es visszater az ertekevel!
+    function random() {
+        return Math.floor(Math.random() * 100);
+    };
+
+    function addition(num1, num2) {
+        return num1 + num2;
+    };
+
+    // Hivd meg a function-t egyszer 2 tetszoleges szammal es irasd ki az eredmenyet.
+    console.log(addition(3,4));
+
+    // Hivd meg a function-t 100 szor 2 random szammal es irasd ki az eredmenyeket egyesevel  
+    for(var i = 1; i <= 100; i++) {
+        console.log(i + '. szám: ' + addition(random(), random()));
+    };
+    ////////////////////
+    // Hivd meg a function-t 100 szor es szummazd az osszes hivas osszeget
+    var myNums = new Array();
+
+    for(var i = 1; i <= 100; i++) {
+        myNums.push(addition(random(), random()));
+    };
+        // var sum = myNums.reduce((accumulator, currentValue) => {
+        //     return accumulator + currentValue;
+        // }, 0);
+
+        var sum = 0;
+        for (let i = 0; i <= 100; i++) {
+            sum += addition(random(), random());
+        };
+
+    console.log('Összes hívás összege: ' + sum);
+
+</script>
+</body>
+</html>
