@@ -21,12 +21,13 @@
     
     <script>
     
-    var thisWord = 'sasrrs'; 
+    var thisWord = 'sasa'; 
+    var resultContainer = new Array;
 
-    // Keszits egy function ami parameterkent kap egy tetszoleges szot es<br>
-    // Megszamolja hany betubol all
+// Keszits egy function ami parameterkent kap egy tetszoleges szot es<br>
+// Megszamolja hany betubol all
 
-    function countLenght(myWord) {
+    function lenght(myWord) {
         for (let i = 1; i <= myWord.length; i++) {
             if(i = myWord.length) {
             console.log('Character count for "' + myWord + '" is ' + i + '.');
@@ -34,13 +35,13 @@
         };
     };
 
-///////////////////////////////////////////////////
-    // Megmondja melyik a leggyakoribb betu benne<br>
+// Megmondja melyik a leggyakoribb betu benne<br>
+
     function frequency(myWord) {
-        var sortedItem = [];
         var sortedItems = new Array;
 
         for (let i = 0; i < myWord.length; i++) {
+            let sortedItem = new Object;
             let currentCharacter = myWord[i];
             let currentCount = 0;
 
@@ -52,67 +53,114 @@
             
             sortedItem.character = currentCharacter;
             sortedItem.count = currentCount;
-            console.log(sortedItem);
+            // console.log(sortedItem);
             sortedItems.push(sortedItem);
         };
-            console.log(sortedItems);
-// ///////
-//         var sortedItems1 = [
-//             {character: 'a', count: 3},
-//             {character: 'a', count: 3},
-//             {character: 'b', count: 1},
-//             {character: 'c', count: 2},
-//             {character: 'c', count: 2},
-//             {character: 'd', count: 3}
-//         ];
-// ///////
-//         for (let i3 = 0; i3 < sortedItems1.length; i3++) {
-//             var sortedArrayItem = sortedItems1[i3].character;
-//             console.log(sortedArrayItem);
+            // console.log('Characters sorted by count:');
+            // console.log(sortedItems);
+            
+        for (let i3 = 0; i3 < sortedItems.length; i3++) {
 
-//             for (let i4 = i3 + 1; i4 < sortedItems1.length; i4++) {
-//                 if (sortedArrayItem == sortedItems1[i4].character) {
-//                     sortedItems1.splice(i4,1);        
-//                 };
-//            };
-//             console.log(sortedItems1);
-//         };
-//         return sortedItems1;
-    };
-
-///////////////////////////////////////////////////
-        var sortedItems1 = [
-            {character: 'a', count: 6},
-            {character: 'b', count: 3},
-            {character: 'c', count: 3},
-            {character: 'd', count: 5}
-        ];
-///////
-    
-    function mostFrequent(thisArray) {
-        var countArray = [];
-
-        for (let i = 0; i < thisArray.length; i++) {
-            countArray.push(thisArray[i].count);
-        };
-        console.log(countArray);
-
-        var biggest = countArray[0];
-
-        for (let i2 = 1; i2 < countArray.length; i2++) {
-            if (countArray[i2] > biggest) {
-                biggest = countArray[i2];
+            for (let i4 = i3 + 1; i4 < sortedItems.length; i4++) {
+                if (sortedItems[i3].character == sortedItems[i4].character) {
+                    sortedItems.splice(i4,1);
+                    i3 = 0; 
+                    i4 = 0;       
+                };
             };
         };
-        console.log(biggest);
-        return biggest;
+
+        return sortedItems;
+        //resultContainer = sortedItems;
+        
+        // console.log('resultContainer:');
+        // console.log(resultContainer);
+        // console.log('////////END////////');
+
+    };
+    
+    //console.log(resultContainer);
+
+    function mostFrequent(thisArray) {
+
+        var biggest = thisArray[0];
+        // console.log(biggest);
+
+        for (let i2 = 1; i2 < thisArray.length; i2++) {
+            if (thisArray[i2].count > biggest.count) {
+                biggest = thisArray[i2];
+                // console.log(biggest);
+            };
+        };
+
+        var mostFrequentElements = new Array;
+
+        //Final result
+        for (let i3 = 0; i3 < thisArray.length; i3++) {
+            if (thisArray[i3].count == biggest.count) {
+        mostFrequentElements.push(thisArray[i3]);   
+        // console.log('This is the most frequent character:');
+        // console.log(thisArray[i3]);
+            };
+        };
+        return mostFrequentElements;
     };
 
-///////////////////////////////////////////
-    //countLenght(thisWord);
-    frequency(thisWord);
-    //countFrequency(thisWord);
-    //mostFrequent(sortedItems1);
+// Kiirja a szot visszafele
+
+    function reverse(myWord) {
+        var array = new Array();
+        var array2 = new Array();
+        var tempCharacter;
+
+        for (let i = 0; i < myWord.length; i++) {
+            array.push(myWord[i]);
+        };
+        // console.log(array);
+        // arr.reverese()-el is megoldahtó!
+
+        console.log('Reversed word: ' + array.join(""));
+    };
+
+////////////////RUN ALL/////////////////
+    lenght(thisWord);
+    let frequencyOfElements = frequency(thisWord);
+    console.log(JSON.parse(JSON.stringify(frequencyOfElements)));
+    // = console.log(frequencyOfElements);
+    console.assert(mostFrequent(frequency('aasadfddad'))[0].count == 4, 'szar1'); 
+    console.assert(mostFrequent(frequency('asdfg'))[0].count == 1, 'sza2'); 
+    console.assert(mostFrequent(frequency('')).length == 0, 'szar3'); 
+    console.assert(mostFrequent(frequency('aaaaaaaaa'))[0].count == 9, 'szar4'); 
+    console.assert(mostFrequent(frequency('aasadfddad'))[0].count == 4, 'szar5'); 
+    
+    reverse(thisWord);
+
+// REFACTOR IDEA: https://www.geeksforgeeks.org/must-use-javascript-array-functions-part-2/
+// Use arr.filter to create new array by filtering with callback function.
+
+// Bercóval megbeszélni!
+// https://www.geeksforgeeks.org/must-use-javascript-array-functions-part-3/
+
+// Hogyan működik ez? Honnan tudja, hogy mi a previousValue és a currentValue? Hol deklarálja ezt?
+// var arr=[{name: "customer 1", sales: 500, location: "NY"}, 
+// 		{name: "customer 1", sales: 200, location: "NJ"}, 
+// 		{name: "customer 1", sales: 700, location: "NY"}, 
+// 		{name: "customer 1", sales: 200, location: "ORD"}, 
+// 		{name: "customer 1", sales: 300, location: "NY"}]; 
+
+// 		function reduceFun2(previousValue, currentValue, index, array) { 
+			
+// 			if (currentValue.location === "NY") { 
+// 				//console.log(previousValue.sales); 
+// 				previousValue.sales = previousValue.sales + Number(currentValue.sales); 
+// 			} 
+// 			return previousValue; 
+// 		} 
+
+// var totalSalesInNY = arr.reduce(reduceFun2); 
+
+// console.log(totalSalesInNY.sales); // Output: 1500 
+
 
     </script>
 </body>
