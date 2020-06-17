@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
    <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Recursive</title>
    <style>
       body {
@@ -15,8 +14,101 @@
       Recursive
    </div>   
    <script>
-   
-   
+
+    let family = JSON.parse('
+        {
+   "name":"Bob",
+   "birth_date":"1800",
+   "weight":"40",
+   "gender":"male",
+   "children":[
+      {
+         "name":"Lisa",
+         "birth_date":"1820",
+         "weight":"40",
+         "gender":"women",
+         "children":[
+            {
+               "name":"Kitti",
+               "birth_date":"1850",
+               "weight":"50",
+               "gender":"women",
+               "children":[
+
+               ]
+            },
+            {
+               "name":"Agi",
+               "birth_date":"1860",
+               "weight":"50",
+               "gender":"women",
+               "children":[
+                  {
+                     "name":"Agi",
+                     "birth_date":"1900",
+                     "weight":"50",
+                     "gender":"women",
+                     "children":[
+
+                     ]
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "name":"Arpi",
+         "birth_date":"1822",
+         "weight":"60",
+         "gender":"man",
+         "children":[
+            {
+               "name":"Kitti",
+               "birth_date":"1850",
+               "weight":"50",
+               "gender":"women",
+               "children":[
+                  {
+                     "name":"Kristof",
+                     "birth_date":"1860",
+                     "weight":"50",
+                     "gender":"women",
+                     "children":[
+                        {
+                           "name":"Csenge",
+                           "birth_date":"1910",
+                           "weight":"50",
+                           "gender":"women",
+                           "children":[
+
+                           ]
+                        },
+                        {
+                           "name":"Nelli",
+                           "birth_date":"1912",
+                           "weight":"50",
+                           "gender":"women",
+                           "children":[
+
+                           ]
+                        }
+                     ]
+                  }
+               ]
+            }
+         ]
+      }
+   ]
+}
+');
+
+console.log(family);
+
+var obj = JSON.parse('{ "name":"John", "age":30, "city":"New York"}');
+
+console.log(obj);
+
+
    </script>
 </body>
 </html>
